@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import { Header as HeaderType } from '../../../../payload/payload-types'
 import { useAuth } from '../../../_providers/Auth'
+import { ThemeSelector } from '../../../_providers/Theme/ThemeSelector'
 import { Button } from '../../Button'
 import { CartLink } from '../../CartLink'
 import { CMSLink } from '../../Link'
@@ -20,7 +21,6 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
-      <CartLink />
       {user && <Link href="/account">Account</Link>}
       {!user && (
         <Button
@@ -32,6 +32,7 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
         />
       )}
       {user && <CartLink />}
+      <ThemeSelector />
     </nav>
   )
 }
