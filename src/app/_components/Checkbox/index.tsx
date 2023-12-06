@@ -13,6 +13,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({ label, value, isSelected, on
   const [isChecked, setIsChecked] = useState(isSelected)
 
   const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log('handleCheckboxChange', e.target.checked)
     setIsChecked(e.target.checked)
     onClickHandler(value)
   }
