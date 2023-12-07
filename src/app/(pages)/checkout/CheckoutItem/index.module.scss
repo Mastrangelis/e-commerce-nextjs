@@ -1,0 +1,80 @@
+@import '../../../_css/common';
+
+.item {
+  display: grid;
+  grid-template-columns: 100px 5fr 1fr;
+  padding: 16px;
+  gap: 16px;
+  border-bottom: 1px solid var(--theme-elevation-150);
+  color: var(--theme-elevation-1000);
+}
+
+.mediaWrapper {
+  position: relative;
+  min-height: 80px;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.media {
+  position: relative;
+  height: 100%;
+}
+
+.image {
+  object-fit: contain;
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.itemDetails {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 30px;
+  align-items: center;
+
+  @include small-break {
+    grid-template-columns: 1fr;
+  }
+}
+
+.titleWrapper {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  p {
+    font-size: 16px;
+    margin-top: 8px;
+  }
+}
+
+.quantity {
+  text-align: center;
+  font-size: 18px;
+  
+  @include small-break {
+    text-align: start;
+    font-size: 16px;
+  }
+}
+
+.subtotal {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @include small-break {
+    align-items: flex-end;
+  }
+}
+
+:global([data-theme="dark"]) {
+  .mediaWrapper {
+    background-color: var(--theme-elevation-150);
+  }
+
+  .item {
+     border-bottom: 1px solid var(--theme-elevation-500);
+  }
+}

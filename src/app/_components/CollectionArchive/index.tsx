@@ -7,7 +7,6 @@ import { Product } from '../../../payload/payload-types'
 import type { ArchiveBlockProps } from '../../_blocks/ArchiveBlock/types'
 import { useFilter } from '../../_providers/Filter'
 import { Card } from '../Card'
-import { Gutter } from '../Gutter'
 import { PageRange } from '../PageRange'
 import { Pagination } from '../Pagination'
 
@@ -113,6 +112,8 @@ export const CollectionArchive: React.FC<Props> = props => {
       { encode: false },
     )
 
+    console.log({ categoryFilters })
+
     const makeRequest = async () => {
       try {
         const req = await fetch(
@@ -148,39 +149,36 @@ export const CollectionArchive: React.FC<Props> = props => {
   return (
     <div className={[classes.collectionArchive, className].filter(Boolean).join(' ')}>
       <div ref={scrollRef} className={classes.scrollRef} />
-      {!isLoading && error && <Gutter>{error}</Gutter>}
+      {!isLoading && error && <div>{error}</div>}
       <Fragment>
         {showPageRange !== false && (
-          <Gutter>
-            <div className={classes.pageRange}>
-              <PageRange
-                totalDocs={results.totalDocs}
-                currentPage={results.page}
-                collection={relationTo}
-                limit={limit}
-              />
-            </div>
-          </Gutter>
-        )}
-        <Gutter>
-          <div className={classes.grid}>
-            {results.docs?.map((result, index) => {
-              return (
-                <div key={index} className={classes.column}>
-                  <Card relationTo="products" doc={result} showCategories />
-                </div>
-              )
-            })}
-          </div>
-          {results.totalPages > 1 && (
-            <Pagination
-              className={classes.pagination}
-              page={results.page}
-              totalPages={results.totalPages}
-              onClick={setPage}
+          <div className={classes.pageRange}>
+            <PageRange
+              totalDocs={results.totalDocs}
+              currentPage={results.page}
+              collection={relationTo}
+              limit={limit}
             />
-          )}
-        </Gutter>
+          </div>
+        )}
+
+        <div className={classes.grid}>
+          {results.docs?.map((result, index) => {
+            return (
+              <div key={index} className={classes.column}>
+                <Card relationTo="products" doc={result} />
+              </div>
+            )
+          })}
+        </div>
+        {results.totalPages > 1 && (
+          <Pagination
+            className={classes.pagination}
+            page={results.page}
+            totalPages={results.totalPages}
+            onClick={setPage}
+          />
+        )}
       </Fragment>
     </div>
   )

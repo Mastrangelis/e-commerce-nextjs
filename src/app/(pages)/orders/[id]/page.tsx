@@ -3,12 +3,13 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { Order } from '../../../../payload/payload-types'
+import type { Order } from '../../../../payload/payload-types'
 import { Button } from '../../../_components/Button'
 import { Gutter } from '../../../_components/Gutter'
 import { HR } from '../../../_components/HR'
 import { Media } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
+import { useTheme } from '../../../_providers/Theme'
 import { formatDateTime } from '../../../_utilities/formatDateTime'
 import { getMeUser } from '../../../_utilities/getMeUser'
 import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
@@ -16,6 +17,7 @@ import { mergeOpenGraph } from '../../../_utilities/mergeOpenGraph'
 import classes from './index.module.scss'
 
 export default async function Order({ params: { id } }) {
+  // const { theme } = useTheme()
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
       'You must be logged in to view this order.',
@@ -47,19 +49,16 @@ export default async function Order({ params: { id } }) {
 
   return (
     <Gutter className={classes.orders}>
-      <h1>
-        {`Order`}
-        <span className={classes.id}>{`${order.id}`}</span>
-      </h1>
+      <h1>Order Details</h1>
       <div className={classes.itemMeta}>
         <p>{`ID: ${order.id}`}</p>
         <p>{`Payment Intent: ${order.stripePaymentIntentID}`}</p>
         <p>{`Ordered On: ${formatDateTime(order.createdAt)}`}</p>
         <p className={classes.total}>
           {'Total: '}
-          {new Intl.NumberFormat('en-US', {
+          {new Intl.NumberFormat('el-GR', {
             style: 'currency',
-            currency: 'usd',
+            currency: 'eur',
           }).format(order.total / 100)}
         </p>
       </div>
@@ -123,8 +122,18 @@ export default async function Order({ params: { id } }) {
       </div>
       <HR />
       <div className={classes.actions}>
-        <Button href="/orders" appearance="primary" label="See all orders" />
-        <Button href="/account" appearance="secondary" label="Go to account" />
+        <Button
+          href="/orders"
+          appearance="primary"
+          label="See all orders"
+          className={classes.seeAllOrders}
+        />
+        <Button
+          href="/account"
+          appearance="secondary"
+          label="Go to account"
+          className={classes.account}
+        />
       </div>
     </Gutter>
   )

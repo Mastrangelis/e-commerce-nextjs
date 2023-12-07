@@ -9,6 +9,7 @@
   align-items: flex-start;
   gap: 24px;
   margin-top: 30px;
+ 
 
   @include mid-break {
     width: 100%;
@@ -17,6 +18,7 @@
 
 .submit {
   width: 100%;
+ 
 }
 
 .message {
@@ -28,4 +30,11 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+}
+
+:global([data-theme="dark"]) {
+  .submit {
+    background-color: var(--theme-elevation-0);
+    color: var(--theme-elevation-1000);
+  }
 }

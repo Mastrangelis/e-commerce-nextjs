@@ -6,10 +6,12 @@ import { useSearchParams } from 'next/navigation'
 import { Button } from '../../../_components/Button'
 import { Message } from '../../../_components/Message'
 import { useCart } from '../../../_providers/Cart'
+import { useTheme } from '../../../_providers/Theme'
 
 import classes from './index.module.scss'
 
 export const OrderConfirmationPage: React.FC<{}> = () => {
+  const { theme } = useTheme()
   const searchParams = useSearchParams()
   const orderID = searchParams.get('order_id')
   const error = searchParams.get('error')
@@ -41,14 +43,21 @@ export const OrderConfirmationPage: React.FC<{}> = () => {
         <Fragment>
           <h1>Thank you for your order!</h1>
           <p>
-            {`Your order has been confirmed. You will receive an email confirmation shortly. Your order ID is ${orderID}.`}
+            Your order has been confirmed. You will receive an email confirmation shortly. Your
+            order ID is <strong>{orderID}</strong>
           </p>
           <div className={classes.actions}>
-            <Button href={`/orders/${orderID}`} label="View order" appearance="primary" />
             <Button
-              href={`${process.env.NEXT_PUBLIC_SERVER_URL}/orders`}
+              className={classes.order}
+              href={`/account/orders/${orderID}`}
+              label="View order"
+              appearance={theme === 'dark' ? 'primary' : 'secondary'}
+            />
+            <Button
+              className={classes.orders}
+              href={`${process.env.NEXT_PUBLIC_SERVER_URL}/account/orders`}
               label="View all orders"
-              appearance="secondary"
+              appearance={theme === 'dark' ? 'secondary' : 'primary'}
             />
           </div>
         </Fragment>

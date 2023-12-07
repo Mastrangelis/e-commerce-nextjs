@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Footer, Media } from '../../../../payload/payload-types'
+import { useTheme } from '../../../_providers/Theme'
 import { inclusions, noHeaderFooterUrls, profileNavItems } from '../../../constants'
 import { Button } from '../../Button'
 import { Gutter } from '../../Gutter'
@@ -13,6 +14,7 @@ import { Gutter } from '../../Gutter'
 import classes from './index.module.scss'
 
 const FooterComponent: React.FC<{ footer: Footer }> = ({ footer }) => {
+  const { theme } = useTheme()
   const pathname = usePathname()
   const navItems = footer?.navItems || []
 
@@ -23,7 +25,7 @@ const FooterComponent: React.FC<{ footer: Footer }> = ({ footer }) => {
           {inclusions.map(inclusion => (
             <li key={inclusion.title}>
               <Image
-                src={inclusion.icon}
+                src={theme === 'dark' ? inclusion.icon.white : inclusion.icon.dark}
                 alt={inclusion.title}
                 width={36}
                 height={36}

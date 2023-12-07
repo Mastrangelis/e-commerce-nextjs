@@ -5,6 +5,7 @@
   display: flex;
   align-items: center;
   gap: calc(var(--base) / 2);
+  color: var(--theme-elevation-1000);
 }
 
 .button {
@@ -12,14 +13,15 @@
   cursor: pointer;
   position: relative;
   display: flex;
-  padding: calc(var(--base) / 2);
+  padding: 8px;
   color: var(--color-elevation-500);
-  border: 1px solid var(--theme-elevation-200);
+  border: 1px solid var(--theme-elevation-1000);
+  border-radius: 6px;
 
   &:disabled {
     cursor: not-allowed;
-    color: var(--theme-elevation-200);
-    border-color: var(--theme-elevation-150);
+    color: var(--theme-elevation-400);
+    border-color: var(--theme-elevation-1000);
   }
 }
 

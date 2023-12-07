@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { Header } from '../../../../payload/payload-types'
+import { useTheme } from '../../../_providers/Theme'
 import { noHeaderFooterUrls } from '../../../constants'
 import { Gutter } from '../../Gutter'
 import { HeaderNav } from '../Nav'
@@ -13,6 +14,7 @@ import { HeaderNav } from '../Nav'
 import classes from './index.module.scss'
 
 const HeaderComponent: React.FC<{ header: Header }> = ({ header }) => {
+  const { theme } = useTheme()
   const pathname = usePathname()
 
   return (
@@ -23,7 +25,12 @@ const HeaderComponent: React.FC<{ header: Header }> = ({ header }) => {
     >
       <Gutter className={classes.wrap}>
         <Link href="/">
-          <Image src="/logo-black.svg" alt="logo" height={50} width={170} />
+          <Image
+            src={theme === 'dark' ? '/logo-white.svg' : '/logo-black.svg'}
+            alt="logo"
+            height={50}
+            width={170}
+          />
         </Link>
         <HeaderNav header={header} />
       </Gutter>

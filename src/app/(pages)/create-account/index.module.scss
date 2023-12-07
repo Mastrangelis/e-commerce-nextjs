@@ -101,3 +101,16 @@
 .params {
   margin-top: var(--base);
 }
+
+:global([data-theme="dark"]) {
+  .formWrapper {
+    background: var(--theme-elevation-200);
+    @include mid-break {
+       background: none;
+    }
+  }
+
+  .formContainer {
+    background: var(--theme-elevation-1000);
+  }
+}
