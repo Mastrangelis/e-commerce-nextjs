@@ -7,3 +7,14 @@
   margin-top: 30px;
   gap: calc(var(--base) / 2);
 }
+
+
+:global([data-theme="dark"]) {
+  .order {
+    color: var(--theme-elevation-0);
+  }
+
+  .orders {
+    color: var(--theme-elevation-1000);
+  }
+}

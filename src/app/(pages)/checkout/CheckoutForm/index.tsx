@@ -9,6 +9,7 @@ import { Button } from '../../../_components/Button'
 import { Message } from '../../../_components/Message'
 import { priceFromJSON } from '../../../_components/Price'
 import { useCart } from '../../../_providers/Cart'
+import { useTheme } from '../../../_providers/Theme'
 
 import classes from './index.module.scss'
 
@@ -19,6 +20,7 @@ export const CheckoutForm: React.FC<{}> = () => {
   const [isLoading, setIsLoading] = React.useState(false)
   const router = useRouter()
   const { cart, cartTotal } = useCart()
+  const { theme } = useTheme()
 
   const handleSubmit = useCallback(
     async e => {
@@ -100,11 +102,15 @@ export const CheckoutForm: React.FC<{}> = () => {
       {error && <Message error={error} />}
       <PaymentElement />
       <div className={classes.actions}>
-        <Button label="Back to cart" href="/cart" appearance="secondary" />
+        <Button
+          label="Back to cart"
+          href="/cart"
+          appearance={theme === 'dark' ? 'primary' : 'secondary'}
+        />
         <Button
           label={isLoading ? 'Loading...' : 'Checkout'}
           type="submit"
-          appearance="primary"
+          appearance={theme === 'dark' ? 'secondary' : 'primary'}
           disabled={!stripe || isLoading}
         />
       </div>

@@ -15,13 +15,13 @@
   height: 24px;
   border-radius: 5px;
   background-color: white;
-  border: 2px solid var(--color-dark-500);
+  border: 2px solid var(--theme-elevation-1000);
   outline: none;
   cursor: pointer;
 }
 
 .checkbox:checked {
-  background-color: var(--color-dark-500);
+  background-color: var(--theme-elevation-1000);
   position: relative;
 }
 
@@ -29,7 +29,7 @@
   content: '\2713';
   font-size: 14px;
   font-weight: bold;
-  color: #fff;
+  color: var(--theme-elevation-0);
   position: absolute;
   right: 5px;
   top: 0;

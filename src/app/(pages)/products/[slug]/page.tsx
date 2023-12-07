@@ -43,6 +43,7 @@ export default async function Product({ params: { slug } }) {
       {product?.enablePaywall && <PaywallBlocks productSlug={slug as string} disableTopPadding />}
       <Blocks
         disableTopPadding
+        disableBottomPadding
         blocks={[
           {
             blockType: 'relatedProducts',

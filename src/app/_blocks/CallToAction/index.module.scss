@@ -12,7 +12,7 @@ $spacer-h: calc(var(--block-padding) / 2);
 
 :global([data-theme="dark"]) {
   .callToAction {
-    background-color: var(--theme-elevation-0);
+    background-color: var(--theme-elevation-150);
     color: var(--theme-elevation-1000);
   }
 }

@@ -7,10 +7,12 @@ import Link from 'next/link'
 import { Media } from '../../../_components/Media'
 import { Price } from '../../../_components/Price'
 import { RemoveFromCartButton } from '../../../_components/RemoveFromCartButton'
+import { useTheme } from '../../../_providers/Theme'
 
 import classes from './index.module.scss'
 
 const CartItem = ({ product, title, metaImage, qty, addItemToCart }) => {
+  const { theme } = useTheme()
   const [quantity, setQuantity] = useState(qty)
 
   const decrementQty = () => {
@@ -49,13 +51,15 @@ const CartItem = ({ product, title, metaImage, qty, addItemToCart }) => {
           <Price product={product} button={false} />
         </div>
 
+        <p></p>
+
         <div className={classes.quantity}>
           <div className={classes.quantityBtn} onClick={decrementQty}>
             <Image
-              src="/assets/icons/minus.svg"
+              src={theme === 'dark' ? '/assets/icons/minus_white.svg' : '/assets/icons/minus.svg'}
               alt="minus"
-              width={24}
-              height={24}
+              width={18}
+              height={18}
               className={classes.qtnBt}
             />
           </div>
@@ -69,10 +73,10 @@ const CartItem = ({ product, title, metaImage, qty, addItemToCart }) => {
 
           <div className={classes.quantityBtn} onClick={incrementQty}>
             <Image
-              src="/assets/icons/plus.svg"
+              src={theme === 'dark' ? '/assets/icons/plus_white.svg' : '/assets/icons/plus.svg'}
               alt="plus"
-              width={24}
-              height={24}
+              width={18}
+              height={18}
               className={classes.qtnBt}
             />
           </div>

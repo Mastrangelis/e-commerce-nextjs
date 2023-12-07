@@ -17,3 +17,10 @@
 .message {
   margin-bottom: var(--base);
 }
+
+:global([data-theme="dark"]) {
+  .submit {
+    background-color: var(--theme-elevation-0);
+    color: var(--theme-elevation-1000);
+  }
+}

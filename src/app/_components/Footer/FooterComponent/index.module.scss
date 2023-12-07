@@ -18,6 +18,7 @@
   padding: 0;
   grid-template-columns: repeat(4, 1fr);
   margin: 100px 0;
+  color: var(--theme-elevation-1000);
 
   @include large-break {
     grid-template-columns: repeat(2, 1fr);
@@ -34,6 +35,13 @@
 
 .icon {
   margin-bottom: 16px;
+
+  & > * {
+   fill: #fff;
+   stroke: #e5e5e5;
+ stroke-width: 10px;
+  }
+  
 }
 
 

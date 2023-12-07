@@ -14,7 +14,6 @@
 .mediaWrapper {
   position: relative;
   min-height: 400px;
-  background-color: var(--color-dark-50);
 
   @include small-break {
     min-height: 250px;
@@ -32,6 +31,8 @@
   display: flex;
   flex-direction: column;
   margin-top: 10px;
+  color: var(--theme-elevation-1000);
+
 }
 
 .categoryWrapper {
@@ -43,6 +44,7 @@
 
 .category {
   font-size: 16px;
+  color: var(--theme-elevation-750);
 }
 
 .stock {
@@ -50,10 +52,17 @@
 }
 
 .separator {
-  color: var(--color-gray-500);
+  color: var(--theme-elevation-500);
   padding: 0 10px;
 }
 
 .description {
   padding: 30px 0;
+  color: var(--theme-elevation-1000);
+}
+
+:global([data-theme="dark"]) {
+  .mediaWrapper {
+    background-color: var(--theme-elevation-150);
+  }
 }

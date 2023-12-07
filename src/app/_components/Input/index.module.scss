@@ -38,7 +38,8 @@
 
 :global([data-theme="dark"]) {
   .input {
-    background-color: var(--theme-elevation-150);
+    background-color: var(--theme-elevation-950);
+    color: var(--theme-elevation-100)
   }
 }
 

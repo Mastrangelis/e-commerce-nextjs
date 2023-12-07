@@ -70,15 +70,14 @@ export const CartPage: React.FC<{
                       const {
                         quantity,
                         product,
-                        product: { id, title, meta, stripeProductID },
+                        product: { title, meta },
                       } = item
-
-                      const isLast = index === (cart?.items?.length || 0) - 1
 
                       const metaImage = meta?.image
 
                       return (
                         <CartItem
+                          key={product.id}
                           product={product}
                           title={title}
                           metaImage={metaImage}
@@ -99,7 +98,7 @@ export const CartPage: React.FC<{
 
                 <div className={classes.row}>
                   <p className={classes.cartTotal}>Delivery Charge</p>
-                  <p className={classes.cartTotal}>$0</p>
+                  <p className={classes.cartTotal}>0,00 €</p>
                 </div>
 
                 <div className={classes.row}>

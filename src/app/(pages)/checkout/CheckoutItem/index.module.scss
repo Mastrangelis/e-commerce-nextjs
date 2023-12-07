@@ -3,16 +3,17 @@
 .item {
   display: grid;
   grid-template-columns: 100px 5fr 1fr;
-  padding: 16px 0;
+  padding: 16px;
   gap: 16px;
-  border-bottom: 1px solid var(--color-dark-50);
+  border-bottom: 1px solid var(--theme-elevation-150);
+  color: var(--theme-elevation-1000);
 }
 
 .mediaWrapper {
   position: relative;
   min-height: 80px;
   padding: 8px;
-  background-color: var(--color-dark-50);
+  border-radius: 10px;
 }
 
 .media {
@@ -65,5 +66,15 @@
 
   @include small-break {
     align-items: flex-end;
+  }
+}
+
+:global([data-theme="dark"]) {
+  .mediaWrapper {
+    background-color: var(--theme-elevation-150);
+  }
+
+  .item {
+     border-bottom: 1px solid var(--theme-elevation-500);
   }
 }
